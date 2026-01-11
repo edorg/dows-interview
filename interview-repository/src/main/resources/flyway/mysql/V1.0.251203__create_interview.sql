@@ -59,6 +59,23 @@ CREATE TABLE IF NOT EXISTS `interview_invite`(
     PRIMARY KEY (`interview_invite_id`)
 ) ENGINE=InnoDB COMMENT='';
 
+drop table if exists `interview_plan`;
+CREATE TABLE IF NOT EXISTS `interview_plan`(
+    `interview_plan_id` bigint(19) NOT NULL COMMENT '面试安排ID',
+    `interview_invite_id` bigint(19) DEFAULT NULL COMMENT '面试邀约ID',
+    `interview_time` datetime DEFAULT NULL COMMENT '面试时间',
+    `demand` integer(11) DEFAULT NULL COMMENT '需求数(需要几个人同意)',
+    `agreement` integer(11) DEFAULT NULL COMMENT '同意数+1(每同意一个人+1,直到和demand相等)',
+    `revision` integer(11) DEFAULT NULL COMMENT '版本号',
+    `app_id` varchar(64) DEFAULT NULL COMMENT '应用id',
+    `create_time` datetime DEFAULT NULL COMMENT '时间戳',
+    `update_time` datetime DEFAULT NULL COMMENT '更新时间',
+    `delete_time` datetime DEFAULT NULL COMMENT '删除时间',
+    `create_id` bigint(19) DEFAULT NULL COMMENT '创建者ID',
+    `update_id` bigint(19) DEFAULT NULL COMMENT '更新者ID',
+    PRIMARY KEY (`interview_plan_id`)
+) ENGINE=InnoDB COMMENT='';
+
 drop table if exists `interview_instance`;
 CREATE TABLE IF NOT EXISTS `interview_instance`(
     `interview_instance_id` bigint(19) NOT NULL COMMENT '面试实例ID',
