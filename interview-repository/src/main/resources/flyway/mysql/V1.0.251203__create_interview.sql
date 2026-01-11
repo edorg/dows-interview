@@ -38,6 +38,27 @@ CREATE TABLE IF NOT EXISTS `interview_assigner`(
     PRIMARY KEY (`interview_assigner_id`)
 ) ENGINE=InnoDB COMMENT='';
 
+drop table if exists `interview_invite`;
+CREATE TABLE IF NOT EXISTS `interview_invite`(
+    `interview_invite_id` bigint(19) NOT NULL COMMENT '面试邀约ID',
+    `interview_flow_id` bigint(19) DEFAULT NULL COMMENT '面试流程ID',
+    `resume_instance_id` bigint(19) DEFAULT NULL COMMENT '人才简历ID',
+    `account_instance_id` bigint(19) DEFAULT NULL COMMENT '求职者账号ID',
+    `invite_message` varchar(64) DEFAULT NULL COMMENT '通知消息',
+    `invite_count` integer(11) DEFAULT NULL COMMENT '邀约次数',
+    `read_state` integer(11) DEFAULT NULL COMMENT '读状态[0:未读，1：已读]',
+    `interview_time` datetime DEFAULT NULL COMMENT '面试时间',
+    `invite_link` varchar(64) DEFAULT NULL COMMENT '邀请链接[腾讯会议记录链接,飞书会议记录链接]',
+    `revision` integer(11) DEFAULT NULL COMMENT '版本号',
+    `app_id` varchar(64) DEFAULT NULL COMMENT '应用id',
+    `create_time` datetime DEFAULT NULL COMMENT '时间戳',
+    `update_time` datetime DEFAULT NULL COMMENT '更新时间',
+    `delete_time` datetime DEFAULT NULL COMMENT '删除时间',
+    `create_id` bigint(19) DEFAULT NULL COMMENT '创建者ID',
+    `update_id` bigint(19) DEFAULT NULL COMMENT '更新者ID',
+    PRIMARY KEY (`interview_invite_id`)
+) ENGINE=InnoDB COMMENT='';
+
 drop table if exists `interview_instance`;
 CREATE TABLE IF NOT EXISTS `interview_instance`(
     `interview_instance_id` bigint(19) NOT NULL COMMENT '面试实例ID',
